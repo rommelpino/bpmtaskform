@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="taskDetailsPageDef"
+                Package="soadev.bpm">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="dynamicRegion1"
+              taskFlowId="${viewScope.taskDetailsForm.dynamicTaskFlowId}"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="payloadHandler" value="#{pageFlowScope.payloadHandler}"/>
+        <parameter id="tz" value="#{pageFlowScope.tz}"/>
+        <parameter id="df" value="#{pageFlowScope.df}"/>
+        <parameter id="tf" value="#{pageFlowScope.tf}"/>
+        <parameter id="dt" value="#{pageFlowScope.dt}"/>
+        <parameter id="dateTimePattern"
+                   value="#{pageFlowScope.dateTimePattern}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBorderLayout id="pbl1">
+    <f:facet name="start"/>
+    <f:facet name="bottom">
+      <af:panelFormLayout id="pfl2" rendered="#{viewScope.reviewObject ne null}">
+        <f:facet name="footer"/>
+        <af:panelLabelAndMessage label="Review" id="plam1">
+          <af:outputText value="#{viewScope.reviewObject.review}" id="ot1"/>
+        </af:panelLabelAndMessage>
+        <af:panelLabelAndMessage label="Reason" id="plam2">
+          <af:outputText value="#{viewScope.reviewObject.reason}" id="ot2"/>
+        </af:panelLabelAndMessage>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <af:panelFormLayout id="pfl1">
+      <f:facet name="footer"/>
+      <af:inputDate label="Date" id="id1"
+                    value="#{viewScope.helloObject.date}"/>
+      <af:inputText label="Greeting" id="it1"
+                    value="#{viewScope.helloObject.greeting}"/>
+      <af:inputText label="Message" id="it2"
+                    value="#{viewScope.helloObject.message}"/>
+    </af:panelFormLayout>
+  </af:panelBorderLayout>
+</jsp:root>

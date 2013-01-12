@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="HelloWorld-payload-task-flow">
+    <default-activity id="__3">hello_world_payload</default-activity>
+    <input-parameter-definition id="__1">
+      <name id="__2">payloadHandler</name>
+      <value>#{pageFlowScope.payloadHandler}</value>
+      <required/>
+    </input-parameter-definition>
+    <view id="hello_world_payload">
+      <page>/hello_world_payload.jsff</page>
+      <input-page-parameter>
+        <from-value>#{pageFlowScope.payloadHandler.payloadObjects['HelloObject']}</from-value>
+        <to-value>#{viewScope.helloObject}</to-value>
+      </input-page-parameter>
+      <input-page-parameter>
+        <from-value>#{pageFlowScope.payloadHandler.payloadObjects['ReviewObject']}</from-value>
+        <to-value>#{viewScope.reviewObject}</to-value>
+      </input-page-parameter>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

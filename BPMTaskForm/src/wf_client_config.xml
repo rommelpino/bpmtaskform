@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflowServicesClientConfiguration xmlns="http://xmlns.oracle.com/bpel/services/client"
+                                     clientType="REMOTE">
+   <server default="true" name="default">
+      <localClient>
+         <participateInClientTransaction>false</participateInClientTransaction>
+      </localClient>
+      <remoteClient>
+         <!-- <serverURL>t3://hofinrommel2:7001</serverURL> -->
+         <serverURL>t3://jedhdoapp01:8001</serverURL>
+         <initialContextFactory>weblogic.jndi.WLInitialContextFactory</initialContextFactory>
+         <participateInClientTransaction>false</participateInClientTransaction>
+      </remoteClient>
+      <soapClient>
+         <!-- <rootEndPointURL>http://hofinrommel2:7001</rootEndPointURL> -->
+         <rootEndPointURL>http://jedhdoapp01:8001</rootEndPointURL>
+         <identityPropagation mode="dynamic" type="saml">
+            <policy-references>
+               <policy-reference enabled="true" category="security"
+                                 uri="oracle/wss10_saml_token_client_policy"/>
+            </policy-references>
+         </identityPropagation>
+      </soapClient>
+   </server>
+</workflowServicesClientConfiguration>

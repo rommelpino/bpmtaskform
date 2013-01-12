@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <TaskFlowCall
+      id="TaskFlowCall2">
+      <property
+         name="taskFlowId">human-task-flow</property>
+      <property
+         name="activityId">human-task-flow</property>
+      <property
+         name="documentReference">/WEB-INF/soadev/bpm/human-task-flow.xml</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>human-task-flow&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">25.097656</property>
+      <property
+         name="x">70.015625</property>
+   </TaskFlowCall>
+   <TaskFlowReturn
+      id="TaskFlowReturn3">
+      <property
+         name="activityId">taskFlowReturn</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskFlowReturn&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  done&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">150.5332</property>
+      <property
+         name="x">76.5</property>
+   </TaskFlowReturn>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule4">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">383.73438</property>
+      <property
+         name="x">50.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="WildcardControlFlowRule4"
+      to="TaskFlowReturn3">
+      <property
+         name="fromOutcome">done</property>
+      <property
+         name="sdm:polyPoints">T50,50.0,341.23438,76.5,204.5332,B50</property>
+   </ControlFlowCase>
+</SDM>

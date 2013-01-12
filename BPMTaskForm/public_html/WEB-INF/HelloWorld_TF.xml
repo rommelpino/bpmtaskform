@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="HelloWorld_TF">
+    <template-reference>
+      <document>/WEB-INF/templates/Wrapper_template.xml</document>
+      <id id="___3">Wrapper_template</id>
+    </template-reference>
+    <managed-bean id="__1">
+      <managed-bean-name id="__4">payloadHandler</managed-bean-name>
+      <managed-bean-class id="__2">soadev.bpm.view.helper.HelloWorldPayloadHandler</managed-bean-class>
+      <managed-bean-scope id="__3">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name id="__7">payloadTaskFlowIdBean</managed-bean-name>
+      <managed-bean-class id="__6">soadev.bpm.view.managed.PayloadTaskFlowIdBean</managed-bean-class>
+      <managed-bean-scope id="__5">pageFlow</managed-bean-scope>
+      <managed-property id="__10">
+        <property-name id="__9">payloadTaskFlowId</property-name>
+        <value id="__11">/WEB-INF/HelloWorld-payload-task-flow.xml#HelloWorld-payload-task-flow</value>
+      </managed-property>
+    </managed-bean>
+  </task-flow-definition>
+</adfc-config>

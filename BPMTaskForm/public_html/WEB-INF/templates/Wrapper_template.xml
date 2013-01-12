@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-template id="Wrapper_template">
+    <default-activity id="__1">human-task-flow</default-activity>
+    <input-parameter-definition id="__17">
+      <name id="__18">bpmWorklistContext</name>
+      <value>#{pageFlowScope.bpmWorklistContext}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__19">
+      <name id="__20">bpmWorklistTaskId</name>
+      <value>#{pageFlowScope.bpmWorklistTaskId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__21">
+      <name id="__22">bpmWorklistTaskVersion</name>
+      <value>#{pageFlowScope.bpmWorklistTaskVersion}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__26">
+      <name id="__25">bpmWorklistHttpURL</name>
+      <value>#{pageFlowScope.bpmWorklistHttpURL}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__37">
+      <name id="__36">bpmWorklistRequestInfo</name>
+      <value>#{pageFlowScope.bpmWorklistRequestInfo}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__39">
+      <name id="__38">bpmWorklistHome</name>
+      <value>#{pageFlowScope.bpmWorklistHome}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__40">
+      <name id="__41">bpmWorklistLogin</name>
+      <value>#{pageFlowScope.bpmWorklistLogin}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__43">
+      <name id="__42">bpmWorklistLogout</name>
+      <value>#{pageFlowScope.bpmWorklistLogout}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__33">
+      <name id="__35">bpmWorklistReassign</name>
+      <value id="__34">#{pageFlowScope.bpmWorklistReassign}</value>
+      <class id="__336"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__339">
+      <name id="__338">bpmWorklistHistory</name>
+      <value id="__340">#{pageFlowScope.bpmWorklistHistory}</value>
+      <class id="__437"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__47">
+      <name id="__46">bpmWorklistRoute</name>
+      <value id="__45">#{pageFlowScope.bpmWorklistRoute}</value>
+      <class id="__48"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__52">
+      <name id="__49">bpmClientType</name>
+      <value id="__50">#{pageFlowScope.bpmClientType}</value>
+      <class id="__51"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__53">
+      <name id="__56">bpmBrowserWindowStatus</name>
+      <value id="__55">#{pageFlowScope.bpmBrowserWindowStatus}</value>
+      <class id="__54"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__57">
+      <name id="__59">bpmWorklistBackPage</name>
+      <value id="__60">#{pageFlowScope.bpmWorklistBackPage}</value>
+      <class id="__58"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__64">
+      <name id="__62">bpmWorklistSecurity</name>
+      <value id="__63">#{pageFlowScope.bpmWorklistSecurity}</value>
+      <class id="__61"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__67">
+      <name id="__66">bpmWorklistGraphHistory</name>
+      <value id="__65">#{pageFlowScope.bpmWorklistGraphSecurity}</value>
+      <class id="__68"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__71">
+      <name id="__69">lg</name>
+      <value id="__70">#{pageFlowScope.lg}</value>
+      <class id="__72"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__76">
+      <name id="__75">cy</name>
+      <value id="__74">#{pageFlowScope.cy}</value>
+      <class id="__73"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__80">
+      <name id="__78">vr</name>
+      <value id="__77">#{pageFlowScope.vr}</value>
+      <class id="__79"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__83">
+      <name id="__82">tz</name>
+      <value id="__84">#{pageFlowScope.tz}</value>
+      <class id="__81"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__88">
+      <name id="__87">df</name>
+      <value id="__86">#{pageFlowScope.df}</value>
+      <class id="__85"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__90">
+      <name id="__89">tf</name>
+      <value id="__92">#{pageFlowScope.tf}</value>
+      <class id="__91"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__94">
+      <name id="__93">dt</name>
+      <value id="__95">#{pageFlowScope.dt}</value>
+      <class id="__96"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__98">
+      <name id="__97">dateTimePattern</name>
+      <value id="__99">#{pageFlowScope.dateTimePattern}</value>
+      <class id="__100"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__101">
+      <name id="__103">datePattern</name>
+      <value id="__102">#{pageFlowScope.datePattern}</value>
+      <class id="__104"></class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__106">
+      <name id="__108">timePattern</name>
+      <value id="__107">#{pageFlowScope.timePattern}</value>
+      <class id="__105"></class>
+    </input-parameter-definition>
+    <task-flow-call id="human-task-flow">
+      <task-flow-reference>
+        <document>/WEB-INF/soadev/bpm/human-task-flow.xml</document>
+        <id>human-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__2">
+        <name>bpmWorklistContext</name>
+        <value>#{pageFlowScope.bpmWorklistContext}</value>
+      </input-parameter>
+      <input-parameter id="__3">
+        <name>bpmWorklistTaskId</name>
+        <value>#{pageFlowScope.bpmWorklistTaskId}</value>
+      </input-parameter>
+      <input-parameter id="__4">
+        <name>bpmWorklistTaskVersion</name>
+        <value>#{pageFlowScope.bpmWorklistTaskVersion}</value>
+      </input-parameter>
+      <input-parameter id="__5">
+        <name>bpmWorklistHttpURL</name>
+        <value>#{pageFlowScope.bpmWorklistHttpURL}</value>
+      </input-parameter>
+      <input-parameter id="__6">
+        <name>bpmWorklistRequestInfo</name>
+        <value>#{pageFlowScope.bpmWorklistRequestInfo}</value>
+      </input-parameter>
+      <input-parameter id="__7">
+        <name>bpmWorklistHome</name>
+        <value>#{pageFlowScope.bpmWorklistHome}</value>
+      </input-parameter>
+      <input-parameter id="__8">
+        <name>bpmWorklistLogin</name>
+        <value>#{pageFlowScope.bpmWorklistLogin}</value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>bpmWorklistLogout</name>
+        <value>#{pageFlowScope.bpmWorklistLogout}</value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>bpmWorklistReassign</name>
+        <value>#{pageFlowScope.bpmWorklistReassign}</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>bpmWorklistHistory</name>
+        <value>#{pageFlowScope.bpmWorklistHistory}</value>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>bpmWorklistRoute</name>
+        <value>#{pageFlowScope.bpmWorklistRoute}</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>bpmClientType</name>
+        <value>#{pageFlowScope.bpmClientType}</value>
+      </input-parameter>
+      <input-parameter id="__14">
+        <name>bpmBrowserWindowStatus</name>
+        <value>#{pageFlowScope.bpmBrowserWindoStatus}</value>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>bpmWorklistBackPage</name>
+        <value>#{pageFlowScope.bpmWorklistBackPage}</value>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>bpmWorklistSecurity</name>
+        <value>#{pageFlowScope.bpmWorklistSecurity}</value>
+      </input-parameter>
+      <input-parameter id="__23">
+        <name>bpmWorklistGraphHistory</name>
+        <value>#{pageFlowScope.bpmWorklistGraphHistory}</value>
+      </input-parameter>
+      <input-parameter id="__24">
+        <name>lg</name>
+        <value>#{pageFlowScope.lg}</value>
+      </input-parameter>
+      <input-parameter id="__27">
+        <name>cy</name>
+        <value>#{pageFlowScope.cy}</value>
+      </input-parameter>
+      <input-parameter id="__28">
+        <name>vr</name>
+        <value>#{pageFlowScope.vr}</value>
+      </input-parameter>
+      <input-parameter id="__29">
+        <name>tz</name>
+        <value>#{pageFlowScope.tz}</value>
+      </input-parameter>
+      <input-parameter id="__30">
+        <name>df</name>
+        <value>#{pageFlowScope.df}</value>
+      </input-parameter>
+      <input-parameter id="__31">
+        <name>tf</name>
+        <value>#{pageFlowScope.tf}</value>
+      </input-parameter>
+      <input-parameter id="__32">
+        <name>dt</name>
+        <value>#{pageFlowScope.dt}</value>
+      </input-parameter>
+      <input-parameter id="__109">
+        <name>dateTimePattern</name>
+        <value>#{pageFlowScope.dateTimePattern}</value>
+      </input-parameter>
+      <input-parameter id="__110">
+        <name>datePattern</name>
+        <value>#{pageFlowScope.datePattern}</value>
+      </input-parameter>
+      <input-parameter id="__111">
+        <name>timePattern</name>
+        <value>#{pageFlowScope.timePattern}</value>
+      </input-parameter>
+      <input-parameter id="__724">
+        <name>payloadHandler</name>
+        <value>#{pageFlowScope.payloadHandler}</value>
+      </input-parameter>
+      <input-parameter id="__727">
+        <name>payloadTaskFlowId</name>
+        <value>#{pageFlowScope.payloadTaskFlowIdBean.payloadTaskFlowId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-return id="taskFlowReturn">
+      <outcome id="__992">
+        <name>done</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__770">
+      <from-activity-id id="__769">*</from-activity-id>
+      <control-flow-case id="__771">
+        <from-outcome id="__773">done</from-outcome>
+        <to-activity-id id="__772">taskFlowReturn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility id="__44">
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-template>
+</adfc-config>

@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName/>
+      <httpPort/>
+      <httpsPort/>
+   </TaskFlowServer>
+   <hwTaskFlow>
+      <WorkflowName>ReviewMessage</WorkflowName>
+      <TaskDefinitionNamespace>http://xmlns.oracle.com/HelloWorld_OBE/HelloWorldProject/ReviewMessage</TaskDefinitionNamespace>
+      <TaskFlowId>HelloWorld_TF</TaskFlowId>
+      <TaskFlowFileName>WEB-INF/HelloWorld_TF.xml</TaskFlowFileName>
+   </hwTaskFlow>
+   <hwTaskFlow>
+      <WorkflowName>SayHello</WorkflowName>
+      <TaskDefinitionNamespace>http://xmlns.oracle.com/HelloWorld_OBE/HelloWorldProject/SayHello</TaskDefinitionNamespace>
+      <TaskFlowId>HelloWorld_TF</TaskFlowId>
+      <TaskFlowFileName>WEB-INF/HelloWorld_TF.xml</TaskFlowFileName>
+   </hwTaskFlow>
+</hwTaskFlows>
