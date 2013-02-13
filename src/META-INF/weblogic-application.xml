@@ -20,7 +20,7 @@
   <library-ref>
     <library-name>oracle.soa.workflow</library-name>
   </library-ref>
-<!--   <library-ref>
+  <library-ref>
     <library-name>oracle.bpm.runtime</library-name>
   </library-ref>
   <library-ref>
@@ -31,5 +31,5 @@
   </library-ref>
   <library-ref>
     <library-name>oracle.bpm.webapp.common</library-name>
-  </library-ref> -->
+  </library-ref>
 </weblogic-application>
