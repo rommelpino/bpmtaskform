@@ -147,24 +147,41 @@
             <f:facet name="legend"/>
             <f:facet name="info"/>
             <af:panelGroupLayout id="pgl0" layout="vertical">
-              <af:showDetailHeader size="1" id="dtHead"
-                                   text="#{resources.DETAILS}"
-                                   shortDesc="#{resources.TASK_HEADER}"
-                                   icon="/hw_images/singleapprover_35x35.png"
-                                   disclosed="true">
-                <f:facet name="context">
-                  <!--  <af:commandImageLink icon="/hw_images/info.png" id="button"
-                                       clientComponent="true"
-                                       rendered="#{!empty bindings.activityId.inputValue}">
-                    <af:showPopupBehavior popupId="helpPopup" align="afterEnd"
-                                          alignId="button"/>
-                  </af:commandImageLink> -->
-                </f:facet>
-                <f:facet name="toolbar"/>
-                <!--trh:tableLayout id="detailTableLayout" width="98%">
-                        <trh:rowLayout>
-                            <trh:cellFormat width="50%" valign="top"-->
-                <af:panelFormLayout maxColumns="3" rows="4" id="pfl6">
+              <af:panelGroupLayout id="pgl1" layout="horizontal">
+                <af:image source="/hw_images/singleapprover_35x35.png" id="i2"/>
+                <af:panelFormLayout maxColumns="12" rows="1" id="pfl6"
+                                    labelAlignment="top" labelWidth="150">
+                  <af:panelLabelAndMessage label="Process" id="plam2">
+                    <af:outputText value="#{viewScope.taskDetailsForm.task.processInfo.processName}"
+                                   id="ot3"/>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Process Instance" id="plam1"
+                                           inlineStyle="white-space: nowrap;">
+                    <af:outputText value="#{viewScope.taskDetailsForm.task.processInfo.instanceId}"
+                                   id="ot12"/>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage id="taskNumber"
+                                           label="#{resources.TASK_NUMBER}"
+                                           inlineStyle="white-space: nowrap;">
+                    <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.taskNumber}"
+                                   id="ot13"/>
+                  </af:panelLabelAndMessage>
+                  <af:selectOneChoice label="#{resources.PRIORITY}" id="soc4"
+                                      value="#{viewScope.taskDetailsForm.task.priority}">
+                    <f:selectItems value="#{viewScope.taskDetailsForm.priorityItems}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                  <!-- <af:inputText id="priority"
+                                value="#{viewScope.taskDetailsForm.task.priority}"
+                                label="#{resources.PRIORITY}"/> -->
+                  <!-- required="#{bindings.priority.mandatory}"
+                                columns="3"
+                                validator="#{actionAvailable.validatePriorityValue}"/> -->
+                  <af:panelLabelAndMessage id="state"
+                                           label="#{resources.STATE}">
+                    <af:outputText value="#{resources[viewScope.taskDetailsForm.task.systemAttributes.state]}"
+                                   id="ot5"/>
+                  </af:panelLabelAndMessage>
                   <af:switcher facetName="#{viewScope.taskDetailsForm.task.systemAttributes.taskViewContext == 'FYI'}"
                                id="s1">
                     <f:facet name="false">
@@ -197,8 +214,7 @@
                                            label="#{resources.CREATE_DATE}">
                     <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.createdDate}"
                                    noWrap="true" id="ot9">
-                      <f:convertDateTime
-                                         timeZone="#{pageFlowScope.tz}"
+                      <f:convertDateTime timeZone="#{pageFlowScope.tz}"
                                          type="both"
                                          pattern="dd/MM/yyyy hh:mm a Z"/>
                     </af:outputText>
@@ -207,11 +223,10 @@
                                            label="#{resources.UPDATE_DATE}">
                     <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.updatedDate}"
                                    noWrap="true" id="ot16">
-                        <f:convertDateTime
-                                         timeZone="#{pageFlowScope.tz}"
+                      <f:convertDateTime timeZone="#{pageFlowScope.tz}"
                                          type="both"
                                          pattern="dd/MM/yyyy hh:mm a Z"/>
-                        <!-- converter below has issues during task initialization -->
+                      <!-- converter below has issues during task initialization -->
                       <!-- <f:convertDateTime type="#{pageFlowScope.dt}"
                                          timeZone="#{pageFlowScope.tz}"
                                          dateStyle="#{pageFlowScope.df}"
@@ -220,17 +235,18 @@
                     </af:outputText>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage id="expirationDate"
-                                           label="#{resources.EXPIRATION_DATE}">
+                                           label="#{resources.EXPIRATION_DATE}"
+                                           inlineStyle="white-space: nowrap;">
                     <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.expirationDate}"
                                    id="ot11">
-                      <f:convertDateTime
-                                         timeZone="#{pageFlowScope.tz}"
+                      <f:convertDateTime timeZone="#{pageFlowScope.tz}"
                                          type="both"
                                          pattern="dd/MM/yyyy hh:mm"/>
                     </af:outputText>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage id="acquiredBy"
-                                           label="#{resources.ACQUIRED_BY}">
+                                           label="#{resources.ACQUIRED_BY}"
+                                           inlineStyle="white-space: nowrap;">
                     <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.acquiredBy}"
                                    id="ot10"/>
                   </af:panelLabelAndMessage>
@@ -239,8 +255,7 @@
                                            rendered="#{!empty viewScope.taskDetailsForm.task.dueDate}">
                     <af:outputText value="#{viewScope.taskDetailsForm.task.dueDate}"
                                    noWrap="true" id="ot14">
-                      <f:convertDateTime
-                                         timeZone="#{pageFlowScope.tz}"
+                      <f:convertDateTime timeZone="#{pageFlowScope.tz}"
                                          type="both"
                                          pattern="dd/MM/yyyy hh:mm"/>
                     </af:outputText>
@@ -251,40 +266,8 @@
                     <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.actionDisplayName}"
                                    id="ot15"/>
                   </af:panelLabelAndMessage>
-                  <af:panelLabelAndMessage id="taskNumber"
-                                           label="#{resources.TASK_NUMBER}">
-                    <af:outputText value="#{viewScope.taskDetailsForm.task.systemAttributes.taskNumber}"
-                                   id="ot13"/>
-                  </af:panelLabelAndMessage>
-                  <af:selectOneChoice label="#{resources.PRIORITY}" id="soc4"
-                                      value="#{viewScope.taskDetailsForm.task.priority}" >
-                    <f:selectItems value="#{viewScope.taskDetailsForm.priorityItems}"
-                                   id="si3"/>
-                  </af:selectOneChoice>
-                  <!-- <af:inputText id="priority"
-                                value="#{viewScope.taskDetailsForm.task.priority}"
-                                label="#{resources.PRIORITY}"/> -->
-                  <!-- required="#{bindings.priority.mandatory}"
-                                columns="3"
-                                validator="#{actionAvailable.validatePriorityValue}"/> -->
-                  <af:panelLabelAndMessage id="state"
-                                           label="#{resources.STATE}">
-                    <af:outputText value="#{resources[viewScope.taskDetailsForm.task.systemAttributes.state]}"
-                                   id="ot5"/>
-                  </af:panelLabelAndMessage>
                 </af:panelFormLayout>
-                <!--/trh:cellFormat>
-                            <trh:cellFormat>
-                                <af:spacer width="15" height="15"/>
-                            </trh:cellFormat>
-                            <trh:cellFormat width="50%" valign="top">
-                                <af:panelFormLayout>
-                                    <f:facet name="footer"/>
-                                </af:panelFormLayout>
-                            </trh:cellFormat>
-                        </trh:rowLayout>
-                    </trh:tableLayout-->
-              </af:showDetailHeader>
+              </af:panelGroupLayout>
               <af:showDetailHeader size="1" id="apCntHd"
                                    text="#{resources.CONTENTS}"
                                    disclosed="true">
@@ -707,7 +690,7 @@
                           </af:panelGroupLayout>
                         </f:facet>
                         <f:facet name="ucm">
-                          <af:inputListOfValues label="#{resources.DOCUMENT_ID}"
+                          <!--<af:inputListOfValues label="#{resources.DOCUMENT_ID}"
                                                 id="idInputComboboxLOVWithTable"
                                                 binding="#{editor.component}"
                                                 value="#{pageFlowScope.readAttachmentBean.ucmDocId}"
@@ -718,7 +701,7 @@
                                                 model="#{pageFlowScope.ADFHumanTaskBean.listOfValuesModel}"
                                                 columns="60"
                                                 rendered="#{pageFlowScope.ADFHumanTaskBean.isUsingUCM}"
-                                                visible="#{pageFlowScope.readAttachmentBean.selectedAttachmentType == 'ucm'}"/>
+                                                visible="#{pageFlowScope.readAttachmentBean.selectedAttachmentType == 'ucm'}"/>-->
                         </f:facet>
                       </af:switcher>
                     </af:panelGroupLayout>

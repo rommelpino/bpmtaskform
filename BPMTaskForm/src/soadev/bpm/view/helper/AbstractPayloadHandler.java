@@ -1,5 +1,7 @@
 package soadev.bpm.view.helper;
 
+import java.io.Serializable;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +20,10 @@ import soadev.bpm.workflow.task.utils.PayloadUtil;
 
 import soadev.view.utils.ADFUtils;
 
-public abstract class AbstractPayloadHandler {
+public abstract class AbstractPayloadHandler implements Serializable{
     private static ADFLogger _logger =
         ADFLogger.createADFLogger(AbstractPayloadHandler.class);
+    private static final long serialVersionUID = 1L;
     //    protected AnyType payload;
     protected Task task;
     protected Map<String, IPrivilege> visibilityRules;
@@ -28,7 +31,7 @@ public abstract class AbstractPayloadHandler {
     private Map dummyMap;
 
     public Map<String, Object> getPayloadObjects() throws Exception {
-        _logger.fine("AbstractPayloadHandler.getPayloadObjects begin");
+        _logger.fine("getPayloadObjects begin [task] = "+ task);
         if (task == null) {
             throw new IllegalStateException("Task not set.");
         }
@@ -45,6 +48,7 @@ public abstract class AbstractPayloadHandler {
                 payloadObjects.put(key, obj);
             }
         }
+        _logger.fine("getPayloadObjects end [payloadObjects] = " + payloadObjects);
         return payloadObjects;
     }
 
@@ -62,9 +66,9 @@ public abstract class AbstractPayloadHandler {
         return payloadElements;
     }
 
-    public void updatePayload() throws Exception {
-        _logger.fine("AbstractPayloadHandler.updatePayload begin");
-        prePayloadUpdateProcessing();
+    public void updatePayload(String action) throws Exception {
+        _logger.fine("AbstractPayloadHandler.updatePayload begin [action] =" + action);
+        beforePayloadUpdate(action);
         Task task = getTask();
         Map<String, Element> payloadElements = getPayloadElements();
         Element payloadElement = task.getPayloadAsElement();
@@ -79,12 +83,12 @@ public abstract class AbstractPayloadHandler {
         _logger.fine("PayloadElement after update: " +
                      XMLUtil.toString(payloadElement));
         task.setPayloadAsElement(payloadElement);
-        postPayloadUpdateProcessing();
+        afterPayloadUpdate(action);
     }
-    protected void prePayloadUpdateProcessing()throws Exception{
+    protected void beforePayloadUpdate(String action)throws Exception{
         
     }
-    protected void postPayloadUpdateProcessing()throws Exception{
+    protected void afterPayloadUpdate(String action)throws Exception{
     }
 
     public boolean hasWriteAccess(String payloadElementName) {

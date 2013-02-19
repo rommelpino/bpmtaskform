@@ -244,13 +244,12 @@ getWorkflowServiceClient().getTaskQueryService().getWorkflowContext(ctxToken);
         // .impl.Privilege
         return null;
     }
-    private void updatePayload() throws Exception {
-        AbstractPayloadHandler handler =
-            (AbstractPayloadHandler)ADFUtils.getPageFlowScope().get("payloadHandler");
+    private void updatePayload(String action) throws Exception {
+        AbstractPayloadHandler handler = (AbstractPayloadHandler)ADFUtils.getPageFlowScope().get("payloadHandler");
         if (handler != null) {
-            handler.updatePayload();
+            handler.updatePayload(action);
         }
-    }
+    }   
 
 /*     public void updatePayload() throws Exception {
         _logger.fine("TaskDetailsForm.updatePayload begin");
@@ -284,10 +283,9 @@ getWorkflowServiceClient().getTaskQueryService().getWorkflowContext(ctxToken);
         return true;
     } */
 
-    public String processAction() {
-        _logger.fine("TaskDetailsForm.processAction begin");
-        try {
-            updatePayload();
+    public String processAction() throws Exception{
+        _logger.fine("TaskDetailsForm.processAction begin: [action] = " +action);
+        try {        
             if ((isCommentsRequired(action)) && (!isNewComment())) {
                 raiseErrorMessage("MESSAGE_EMPTY_COMMENTS_FOR_ACTION");
                 return null;
@@ -302,11 +300,23 @@ getWorkflowServiceClient().getTaskQueryService().getWorkflowContext(ctxToken);
             }
             ITaskService taskService =
                 getWorkflowServiceClient().getTaskService();
-
-            if ("UPDATE".equals(action)) {
-                task = taskService.updateTask(ctx, task);
+            
+            //INFO_SUBMIT should be before updatePayload 
+            //to avoid Insufficient privileges to access the task information for this task.
+            //Caused by: java.sql.SQLException: ORA-20005: Task is modified
+            // ORA-06512: at "DEV_SOAINFRA.WFTASKPKG_111160", line 2932
+            
+            if ("INFO_SUBMIT".equals(action)) {
+                if ((!isNewComment()) && (!isTaskUpdatedWithComments())) {
+                    raiseErrorMessage("MESSAGE_EMPTY_COMMENTS_FOR_SUBMIT_INFO");
+                    return null;
+                }
+                taskService.submitInfoForTask(ctx, task);
                 return null;
             }
+            
+            updatePayload(action);
+            
             if ("ESCALATE".equals(action)) {
                 taskService.escalateTask(ctx, task);
                 return "done";
@@ -331,14 +341,14 @@ getWorkflowServiceClient().getTaskQueryService().getWorkflowContext(ctxToken);
                 task = taskService.acquireTask(ctx, task);
                 return null;
             }
-            if ("INFO_SUBMIT".equals(action)) {
-                if ((!isNewComment()) && (!isTaskUpdatedWithComments())) {
-                    raiseErrorMessage("MESSAGE_EMPTY_COMMENTS_FOR_SUBMIT_INFO");
-                    return null;
-                }
-                taskService.submitInfoForTask(ctx, task);
+            
+            if ("UPDATE".equals(action)) {
+                task = taskService.updateTask(ctx, task);
+                return null;
             }
+            
             taskService.updateTaskOutcome(ctx, task, action);
+         _logger.fine("TaskDetailsForm.processAction end");
             return "done";
         } catch (Exception e) {
             JSFUtils.addMessage(null, e.getMessage(), e.getMessage(),FacesMessage.SEVERITY_ERROR);
